@@ -16,6 +16,10 @@ def bounded_subsets(s:set, c:float):
     [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [4], [1, 4]]
     >>> [s for s in bounded_subsets({1,2,3}, 4)]
     [[], [1], [2], [1, 2], [3], [1, 3]]
+    >>> [s for s in bounded_subsets({1,2,3}, 6)]
+    [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+    >>> [s for s in bounded_subsets({1.5, 2.5, 0.5}, 5)]
+    [[], [0.5], [1.5], [0.5, 1.5], [2.5], [0.5, 2.5], [1.5, 2.5], [0.5, 1.5, 2.5]]
     """
 
     sets = [[]]
@@ -40,7 +44,24 @@ def recursive_subsets(numbers, c):
 
 if __name__ == '__main__':
 
-    # print([s for s in bounded_subsets({1,2,3}, 4)])
+    print([s for s in bounded_subsets({1.5, 2.5, 0.5}, 5)])
+    print([s for s in bounded_subsets({1, 2.5, 1.5}, 5)])
+    print([s for s in bounded_subsets({1, 2, 4}, 5)])
+
+    power_generator = bounded_subsets({1, 2, 4}, 5)
+    print(type(power_generator))
+
+    print(power_generator.__next__())
+    print(power_generator.__next__())
+    print(power_generator.__next__())
+    print(power_generator.__next__())
+    print(power_generator.__next__())
+    print(power_generator.__next__())
+
+    try:
+        print(power_generator.__next__())
+    except StopIteration:
+        print("Error - StopIteration: no more item to iterate on")
 
     (failures, tests) = doctest.testmod(report=True)
     print("{} failures, {} tests".format(failures, tests))

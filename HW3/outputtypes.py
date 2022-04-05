@@ -60,5 +60,5 @@ class TotalInfo(Items):
     # Output the entire info (items, total value, total weight).
     @classmethod
     def extract_output_from_knapsack(cls, knapsack: Knapsack) -> Any:
-        return knapsack.bag, knapsack.sum_values, knapsack.sum_weight
+        return "knapsack={}, value={}, weight={}".format(knapsack.bag, knapsack.sum_values, knapsack.sum_weight)
 
