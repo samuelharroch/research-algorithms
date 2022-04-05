@@ -25,13 +25,8 @@ def f1(x: int):
 
 if __name__ == '__main__':
 
-    print(f(2))
-    print(f(2))
-    print(f(2))
-    print(f(4))
-    print(f(2))
+    print(f(2))     #should return
+    print(f1(4))    #should return
 
-    print(f1(2))
-    print(f1(2))
-    print(f1(2))
-    print(f1(4))
+    print(f(2))     #should print message
+    print(f1(4))        #should print message
