@@ -35,9 +35,9 @@ def greedy_ratio(knapsack: Knapsack, items):
 
 def knapsack_solver(algorithm:Callable, capacity:float, items:list, output:out.OutputType = out.Items):
 
-    if isinstance(items, dict):  # items is a dict mapping an item to its value.
+    if isinstance(items, dict):  # items is a dict mapping an item_name to its (value, weight) representation.
         items = [ItemWithName(key, *value) for key, value in items.items()]
-    else:  # items is a list
+    else:  # items is a list (value, weight) representation
         items = [Item(*item) for item in items]
 
     knapsack = output.create_empty_knapsack(capacity)
@@ -47,9 +47,9 @@ def knapsack_solver(algorithm:Callable, capacity:float, items:list, output:out.O
 
 if __name__ == '__main__':
 
-    items1 = [(1,2),(2,1), (3,2), (5,1), (3,1), (5,5)]
-    items2 = { 'a':(1, 2), 'b':(2, 1), 'c':(3, 2), 'd':(5, 1), 'e':(3, 1), 'f':(5, 5)}
+    items1 = [(1,2),(2,1), (3,2), (5,1), (3,1), (5,4)]
+    items2 = { 'a':(1, 2), 'b':(2, 1), 'c':(3, 2), 'd':(5, 1), 'e':(3, 1), 'f':(5, 4)}
 
-    x = knapsack_solver(algorithm= greedy_value, capacity=5, items=items2, output= out.Items)
+    x = knapsack_solver(algorithm= greedy_value, capacity=5, items=items2, output= out.TotalInfo)
 
     print(x)

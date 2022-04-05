@@ -1,6 +1,12 @@
+"""
+classes of item representation, should answers to the 2 types input requirement
+"""
+
 
 class Item():
-
+    """
+    basic representation with value and weight
+    """
     def __init__(self, value:float, weight:float):
         self.value = value
         self.weight = weight
@@ -22,6 +28,9 @@ class Item():
 
 
 class ItemWithName(Item):
+    """
+    detailed representation with name of item
+    """
 
     def __init__(self, name:str, value:float, weight:float):
         super().__init__(value, weight)

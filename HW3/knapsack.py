@@ -1,10 +1,14 @@
 from abc import ABC, abstractmethod
 from items import *
 
+"""
+classes of Knapsack structures 
+"""
+
 
 class Knapsack(ABC):
     """
-    An abstract bins class.
+    An abstract Knapsack class.
     """
 
     def __init__(self, capacity: float):
@@ -24,7 +28,7 @@ class Knapsack(ABC):
 
 class KnapsackSumValueAndWeight(Knapsack):
     """
-    A bins structure that keeps track of both the sum and the entire contents of each bin.
+    A Knapsack structure that keeps track of both value and weight (capacity used).
     """
 
     def add_item_to_knapsack(self, item: Item):
@@ -36,21 +40,14 @@ class KnapsackSumValueAndWeight(Knapsack):
         return self.sum_values, self.sum_weight
 
 
-class KnapsackItems(Knapsack):
+class KnapsackItems(KnapsackSumValueAndWeight):
     """
-    A bins structure that keeps track of both the sum and the entire contents of each bin.
+    A bins structure that keeps also the Knapsack content.
     """
     def add_item_to_knapsack(self, item: Item):
-        self.capacity -= item.weight
+        super().add_item_to_knapsack(item)
         self.bag.append(item)
 
     def result(self):
         return self.bag
 
-
-if __name__ == '__main__':
-    item = ItemWithName('gold',1,2)
-
-    k = KnapsackItems(5)
-    k.add_item_to_knapsack(item)
-    print(k.result())

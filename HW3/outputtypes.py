@@ -11,14 +11,14 @@ class OutputType(ABC):
     @classmethod
     def create_empty_knapsack(cls, capacity: float) -> Knapsack:
         """
-        Construct and return a Bins structure. Used at the initialization phase of an algorithm.
+        Construct and return a Knapsack structure. Used at the initialization phase of an algorithm.
         """
         pass
 
     @classmethod
     def extract_output_from_knapsack(cls, knapsack: Knapsack) -> Any:
         """
-        Return the required output from the given list of filled bins.
+        Return the required output from the given knapsack.
         """
         pass
 
@@ -28,7 +28,7 @@ class ValuesSum(OutputType):
     def create_empty_knapsack(cls, capacity: float):
         return KnapsackSumValueAndWeight(capacity)
 
-    # Output the sums of all the bins (but not the bins contents).
+    # Output the sums of values.
     @classmethod
     def extract_output_from_knapsack(cls, knapsack: Knapsack) -> Any:
         return knapsack.sum_values
@@ -39,7 +39,7 @@ class WeightSum(OutputType):
     def create_empty_knapsack(cls, capacity: float):
         return KnapsackSumValueAndWeight(capacity)
 
-    # Output the sums of all the bins (but not the bins contents).
+    # Output the sums of weight.
     @classmethod
     def extract_output_from_knapsack(cls, knapsack: Knapsack) -> Any:
         return knapsack.sum_weight
@@ -50,16 +50,15 @@ class Items(OutputType):
     def create_empty_knapsack(cls, capacity: float):
         return KnapsackItems(capacity)
 
-    # Output the set of all bins.
+    # Output the items in the knapsack.
     @classmethod
     def extract_output_from_knapsack(cls, knapsack: Knapsack) -> Any:
         return knapsack.bag
 
 
-########################################################## to review ###################################################
-
-class ItemsAndSums(Items):
-    # Output the set of all bins.
+class TotalInfo(Items):
+    # Output the entire info (items, total value, total weight).
     @classmethod
     def extract_output_from_knapsack(cls, knapsack: Knapsack) -> Any:
-        return knapsack.bag
+        return knapsack.bag, knapsack.sum_values, knapsack.sum_weight
+
