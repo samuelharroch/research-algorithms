@@ -1,5 +1,5 @@
 """
-Define the various available output formats for a partition algorithm.
+Define the various available output formats for a knapsack problem algorithm.
 """
 
 from abc import ABC
