@@ -41,3 +41,5 @@ if __name__ == '__main__':
     print(safe_call(f, y=1.1, x=1,  z=2))
 
     safe_call(pow, y=2.6, x=5)
+
+    safe_call(pow, y=2.6, x=5)
